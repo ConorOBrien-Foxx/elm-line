@@ -1,0 +1,23 @@
+{
+  "name": "elm-line",
+  "version": "1.0.0",
+  "description": "Running Elm from the command line",
+  "main": "elm-line.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConorOBrien-Foxx/elm-line.git"
+  },
+  "keywords": [
+    "Elm",
+    "CLI"
+  ],
+  "author": "Conor O'Brien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConorOBrien-Foxx/elm-line/issues"
+  },
+  "homepage": "https://github.com/ConorOBrien-Foxx/elm-line#readme"
+}
