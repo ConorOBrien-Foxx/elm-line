@@ -1,6 +1,6 @@
 {
   "name": "elm-line",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Running Elm from the command line",
   "main": "elm-line.js",
   "scripts": {
