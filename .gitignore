@@ -5,3 +5,5 @@ repl-temp-*
 # compile files
 compiled.js
 test.ielm
+# auto generated file
+src/Main.elm
