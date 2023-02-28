@@ -2,6 +2,8 @@
 
 A simple wrapper for Elm that takes Elm scripts and runs them as a command line program.
 
+**Want this program in your path?** `npm link`!
+
 ## Example Usage
 
 ```hs
