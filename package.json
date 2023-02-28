@@ -2,7 +2,7 @@
   "name": "elm-line",
   "version": "1.0.3",
   "description": "Running Elm from the command line",
-  "main": "elm-line.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/ConorOBrien-Foxx/elm-line.git"
   },
   "bin": {
-    "elm-line": "elm-line.js"
+    "elm-line": "main.js"
   },
   "keywords": [
     "Elm",
