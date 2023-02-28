@@ -1,6 +1,6 @@
 {
   "name": "elm-line",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Running Elm from the command line",
   "main": "elm-line.js",
   "scripts": {
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ConorOBrien-Foxx/elm-line.git"
+  },
+  "bin": {
+    "elm-line": "elm-line.js"
   },
   "keywords": [
     "Elm",

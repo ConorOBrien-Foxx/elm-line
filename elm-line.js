@@ -1,12 +1,24 @@
-const util = { parseArgs, promisify } = require("node:util");
+#!/usr/bin/env node
+const /*util =*/ { promisify } = require("node:util");
 const exec = promisify(require("node:child_process").exec);
 const fs = require("node:fs/promises");
+const path = require("node:path");
 
-const BOILERPLATE = 
-    "module Main exposing (main)\n\nimport Interact\n\n-- header";
+// elm doesn't accept windows-style paths, so path.join does not work here
+// const elmPathJoin = path.join;
+const elmPathJoin = (left, right) =>
+    left.replace(/\/+$/g, "") + "/" + right.replace(/^\/+/g, "");
 
-const cmd = "elm make --output compiled.js src/Main.elm";
+const BOILERPLATE = "module Main exposing (main)\n\nimport Interact\n\n-- imported code\n";
 
+const MY_BASE_DIRECTORY = __dirname;
+// TODO: quote
+const COMPILED_SRC = elmPathJoin(MY_BASE_DIRECTORY, "compiled.js");
+const MAIN_SRC = elmPathJoin(MY_BASE_DIRECTORY, "src/Main.elm");
+
+// TODO: allow multiple instances of elm-line running at the same time?
+// (use separate, explicitly temporary directories)
+const cmd = `cd ${MY_BASE_DIRECTORY} && elm make --output ${COMPILED_SRC} ${MAIN_SRC}`;
 const main = async function(args) {
     // TODO: filter out command line variables
     let [ filePath ] = args;
@@ -18,7 +30,7 @@ const main = async function(args) {
 
     let content = await fs.readFile(filePath);
     content = BOILERPLATE + content;
-    await fs.writeFile("src/Main.elm", content);
+    await fs.writeFile(MAIN_SRC, content);
 
     const { stderr } = await exec(cmd);
     if(stderr) {
@@ -26,7 +38,7 @@ const main = async function(args) {
         process.exit(1);
     }
 
-    const { Elm } = require("./compiled.js");
+    const { Elm } = require(COMPILED_SRC);
     const main = Elm.Main.init();
     
     const readline = require('readline');
